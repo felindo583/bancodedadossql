@@ -72,3 +72,12 @@ CREATE TABLE extra(
     quantidade INT(20),
     preco DOUBLE NOT NULL
 );
+...
+
+
+## Passo 2: editar tabelas usando 'ALTER'
+Apos a criação da tabela, podemos adcionar novos campos. Vamos adcionar uma coluna 'email' na tabela 'autor'
+
+''''SQL
+ALTER TABLE autor
+ADD COLUMN email VARCHAR(100);
