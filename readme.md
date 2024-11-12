@@ -121,3 +121,45 @@ VALUES
 ('Terror'),
 ('Romance');
 ''''
+
+## Passo 5: atualizando os dados usando 'UPDATE'
+Podemos atualizar os dados com o comando UPDATE.
+Vamos corrir a data de publicação do livro 'capitaes da areia'
+
+'''SQL
+UPDATe livro
+SET ano_publicacao = 1938
+WHERe titulo = 'Capitaes da Areia';
+
+'''
+
+## Passo 6: Excluindo os dados usando 'DELETE'
+Para remover os registros de uma tabela usamos o comando 'DELETE'.
+Vamos excluir o livro 'memorias postumas de bras cubas'.
+
+'''SQL
+DELETE FROM livro
+WHERE id_livro = 4;
+'''
+## Passo 7: Consultando os dados usando 'SELECT'
+É possivel selecionar os dados para vizualizar da forma como quiser. Para isso usamos o comando 'SELECT'
+#### Passo 7.1: selecionar todos os livros com suas editoras e autores
+Vamos usar dados das tabelas 'livros', 'editora', 'autor', e 'assunto'
+usando o comando 'JOIN'
+'''SQL
+SELECT livro.titulo AS nome,
+       editora.nome_editora AS editora,
+       autor.nome_autor AS autor,
+       assunto.descricao_assunto AS tema,
+       livro.ano_publicacao AS ano
+FROM livro
+JOIN editora ON livro.id_editora = editora.id_editora,
+JOIN autor ON livro.id_autor = autor.id_autor,
+JOIN assunto ON livro.id_assunto = assunto.id_assunto;
+'''
+#### Passo 7.2: selecionar todos os livros com o mesmo assunto
+SELECT livro.titulo AS tema
+       assunto.descricao_assunto AS tema
+FROM livro
+JOIN assunto ON livro.assunto = assunto.id_assunto
+WHERE assunto.descricao_assunto = 'Romance';
